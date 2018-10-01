@@ -1,4 +1,5 @@
 import tkinter
+from core.loginService import LoginService
 class Login:
     def __init__(self,master):
         tkinter.Label(master, text="Username: ").grid(row=0,column=0)

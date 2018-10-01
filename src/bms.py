@@ -6,9 +6,9 @@ Licensed Under MIT
 # This is the kickstarter
 import tkinter
 from core.config import *
-from ui.register import Register
-from ui.login import Login
-from ui.admin import Admin
+from register import Register
+from login import Login
+from admin import Admin
 
 class MainWindow:
     def __init__(self,master):
