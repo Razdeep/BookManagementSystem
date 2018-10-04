@@ -11,3 +11,5 @@ To use these as global config, use "from core.config import *"
 DISPLAY_WIDTH=800
 DISPLAY_HEIGHT=600
 TITLE='Book Management System'
+ADMIN_NAME='rajdeep'
+ADMIN_PASSWORD='rajdeep'

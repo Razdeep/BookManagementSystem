@@ -10,7 +10,7 @@ import sqlite3
 class DbHandler:
     def __init__(self):
         self.conn=sqlite3.connect('data.db')
-    def getConnection(): pass
+    def getConnection(self): pass
 
 
 # Driver code
