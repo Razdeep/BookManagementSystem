@@ -23,20 +23,27 @@ class Register:
         female_radio=tkinter.Radiobutton(root,text='Female',variable=var,value=2)
         male_radio.grid(row=3,column=1)
         female_radio.grid(row=3,column=2)
-        tkinter.Label(root,text='Email ID').grid(row=4,column=0)
+        tkinter.Label(root,text='Address').grid(row=4,column=0)
+        address_entry=tkinter.Entry(root)
+        address_entry.grid(row=4,column=1)
+        tkinter.Label(root,text='Email ID').grid(row=5,column=0)
         emailid_entry=tkinter.Entry(root)
-        emailid_entry.grid(row=4,column=1)
-        tkinter.Label(root,text='Password').grid(row=5,column=0)
+        emailid_entry.grid(row=5,column=1)
+        tkinter.Label(root,text='Password').grid(row=6,column=0)
         password_entry=tkinter.Entry(root)
-        password_entry.grid(row=5,column=1)
-        tkinter.Label(root,text='Confirm Password').grid(row=6,column=0)
+        password_entry.grid(row=6,column=1)
+        tkinter.Label(root,text='Confirm Password').grid(row=7,column=0)
         confirmpassword_entry=tkinter.Entry(root)
-        confirmpassword_entry.grid(row=6,column=1)
+        confirmpassword_entry.grid(row=7,column=1)
         submit_btn=tkinter.Button(root,text='Submit')
-        submit_btn.grid(row=7,column=0)
+        submit_btn.grid(row=8,column=0)
         reset_btn=tkinter.Button(root,text='Reset')
-        reset_btn.grid(row=7,column=1)
-
+        reset_btn.grid(row=8,column=1)
+    def checkForm(self):pass
+    def checkName(self):pass
+    def checkDOB(self):pass
+    def checkEmail(self):pass
+    def submit(self):pass
 if __name__=='__main__':
     root=tkinter.Tk()
     Register(root)

@@ -37,6 +37,15 @@ def createSampleDatabaseWithDummyData():
     # @TODO: test
     # In case of failure use for loops
 
+def addBook():
+    pass
+
+def updateBook():
+    pass
+
+def deleteBook():
+    pass
+
 if __name__=='__main__':
     if isValidCredential('raj','raj'):
         print('User ID : raj')
