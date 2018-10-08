@@ -1,3 +1,8 @@
+'''
+Created on Sep 29, 2018
+@author: Rajdeep Roy Chowdhury
+Licensed Under MIT
+'''
 import sqlite3
     
 def isValidCredential(emailId,password):
@@ -18,6 +23,13 @@ def registerUser(user):
     conn.close()
     # @TODO: test
 
+def updateUser(object):
+    '''For updating user'''
+    # to be implemented at last
+
+def deleteUser(object):
+    '''For deleting user from REGISTER table'''
+    # @TODO
 
 def createDatabase():
     '''Creates an empty database'''
