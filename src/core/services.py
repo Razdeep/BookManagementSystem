@@ -34,7 +34,7 @@ def deleteUser(object):
 def createDatabase():
     '''Creates an empty database'''
     conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
-    conn.execute('create table REGISTER(FIRST_NAME varchar(20),LAST_NAME varchar(20),DATE_OF_BIRTH varchar(20),GENDER varchar(10),CONTACT varchar(12),EMAIL_ID varchar(30),PASSWORD varchar(30)')
+    conn.execute('CREATE TABLE IF NOT EXISTS "REGISTER" ("FIRST_NAME" TEXT,"LAST_NAME" TEXT,"DOB" TEXT,"GENDER" TEXT, "CONTACT" TEXT,"EMAIL_ID" TEXT NOT NULL UNIQUE, "PASSWORD" TEXT, PRIMARY KEY("EMAIL_ID"))')
     conn.close()
 
 def createSampleDatabaseWithDummyData():
@@ -44,7 +44,10 @@ def createSampleDatabaseWithDummyData():
                 ('Bishakha', 'Jain','01-01-1999','FEMALE','7397472323','bishakhaajain@gmail.com','password'),
                 ('Riya','Garg','01-01-1999','FEMALE','217863821','riyagargsomething@gmail.com','password')]
     conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
-    conn.executemany('insert into REGISTER values(?,?,?,?,?,?,?)',userList)
+    # conn.executemany('insert into REGISTER values(?,?,?,?,?,?,?)',userList)
+    for user in userList:
+        conn.execute('insert into REGISTER values(?,?,?,?,?,?,?)',user)
+    conn.commit()
     conn.close()
     # @TODO: test
     # In case of failure use for loops

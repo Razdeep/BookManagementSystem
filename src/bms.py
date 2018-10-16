@@ -9,7 +9,7 @@ from core.config import *
 from register import Register
 from login import Login
 from admin import Admin
-
+from homescreen import HomeScreen
 class MainWindow:
     def __init__(self,master):
         self.master=master
@@ -29,7 +29,10 @@ class MainWindow:
         self.body=tkinter.Frame(master)
         Login(self.body)
         self.body.place(x=DISPLAY_WIDTH//2,y=DISPLAY_HEIGHT//2)
-
+    # def getInstance(self): # Following singleton architecture
+    #     if self.instance==None:
+    #         self.instance=self
+    #     return self.instance
 
     def showRegisterHere(self):
         self.body.destroy()
@@ -46,6 +49,11 @@ class MainWindow:
         self.body=tkinter.Frame(self.master)
         Admin(self.body)
         self.body.place(x=DISPLAY_WIDTH//2,y=DISPLAY_HEIGHT//2)
+    # def showHomeScreen(self):
+    #     self.body.destroy()
+    #     self.body=tkinter.Frame(self.master)
+    #     HomeScreen(self.body)
+    #     self.body.place(x=DISPLAY_WIDTH//2,y=DISPLAY_HEIGHT//2)
 
 
 if __name__=='__main__':

@@ -5,6 +5,7 @@ Licensed Under MIT
 '''
 import tkinter
 from core.services import registerUser
+from register import Register
 class Admin:
     def __init__(self,master):
         self.master=master
@@ -37,14 +38,25 @@ class Admin:
     def showAddUser(self):
         self.subFrame.destroy()
         self.subFrame=tkinter.Frame(self.master)
-        # tkinter.Label(self.subFrame,text='hello').pack() #Register Window shall open here
+        #Register Window shall open here
+        Register(self.subFrame)
         self.subFrame.grid(row=0,column=1,rowspan=7)
     def showDeleteUser(self):
         self.subFrame.destroy()
         self.subFrame=tkinter.Frame(self.master)
         tkinter.Label(self.subFrame,text='Enter user email ID to delete').grid(row=0,column=0)
+        email_entry=tkinter.Entry(self.subFrame)
+        email_entry.grid(row=0,column=1)
+        cancel_btn=tkinter.Button(self.subFrame,text='Cancel')
+        cancel_btn.grid(row=1,column=0)
+        proceed_btn=tkinter.Button(self.subFrame,text='Proceed')
+        proceed_btn.grid(row=1,column=1)
         self.subFrame.grid(row=0,column=1,rowspan=7)
-    def showUpdateUser(self):pass
+    def showUpdateUser(self): pass # Hard to be implemented
+        # self.subFrame.destroy()
+        # self.subFrame=tkinter.Frame(self.master)
+        # tkinter.Label(self.subFrame,text='Enter user email ID to delete').grid(row=0,column=0)
+        # self.subFrame.grid(row=0,column=1,rowspan=7)
     def showViewOrders(self):pass
     def showAddBook(self):
         self.subFrame.destroy()
