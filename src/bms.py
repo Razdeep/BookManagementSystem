@@ -26,25 +26,25 @@ class MainWindow:
         admin_nav.grid(row=0,column=2)
         navbar.place(x=0,y=0)
 
-        self.body=tkinter.Frame(master)
+        self.body=tkinter.Frame(master,borderwidth=1,relief='solid')
         Login(self.body)
-        self.body.place(x=DISPLAY_WIDTH//2,y=DISPLAY_HEIGHT//2)
+        self.body.place(x=X_WINDOW,y=Y_WINDOW)
 
     def showRegisterHere(self):
         self.body.destroy()
-        self.body=tkinter.Frame(self.master)
+        self.body=tkinter.Frame(self.master,borderwidth=1,relief='solid')
         Register(self.body)
-        self.body.place(x=DISPLAY_WIDTH//2,y=DISPLAY_HEIGHT//2)
+        self.body.place(x=X_WINDOW,y=Y_WINDOW)
     def showLoginHere(self):
         self.body.destroy()
-        self.body=tkinter.Frame(self.master)
+        self.body=tkinter.Frame(self.master,borderwidth=1,relief='solid')
         Login(self.body)
-        self.body.place(x=DISPLAY_WIDTH//2,y=DISPLAY_HEIGHT//2)
+        self.body.place(x=X_WINDOW,y=Y_WINDOW)
     def showAdminPortal(self):
         self.body.destroy()
-        self.body=tkinter.Frame(self.master)
+        self.body=tkinter.Frame(self.master,borderwidth=1,relief='solid')
         Admin(self.body)
-        self.body.place(x=DISPLAY_WIDTH//2,y=DISPLAY_HEIGHT//2)
+        self.body.place(x=X_WINDOW,y=Y_WINDOW)
 
 if __name__=='__main__':
     root=tkinter.Tk()
