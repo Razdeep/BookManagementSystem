@@ -29,10 +29,6 @@ class MainWindow:
         self.body=tkinter.Frame(master)
         Login(self.body)
         self.body.place(x=DISPLAY_WIDTH//2,y=DISPLAY_HEIGHT//2)
-    # def getInstance(self): # Following singleton architecture
-    #     if self.instance==None:
-    #         self.instance=self
-    #     return self.instance
 
     def showRegisterHere(self):
         self.body.destroy()
@@ -49,12 +45,6 @@ class MainWindow:
         self.body=tkinter.Frame(self.master)
         Admin(self.body)
         self.body.place(x=DISPLAY_WIDTH//2,y=DISPLAY_HEIGHT//2)
-    # def showHomeScreen(self):
-    #     self.body.destroy()
-    #     self.body=tkinter.Frame(self.master)
-    #     HomeScreen(self.body)
-    #     self.body.place(x=DISPLAY_WIDTH//2,y=DISPLAY_HEIGHT//2)
-
 
 if __name__=='__main__':
     root=tkinter.Tk()
