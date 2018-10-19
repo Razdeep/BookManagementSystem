@@ -4,6 +4,8 @@ Created on Sep 29, 2018
 Licensed Under MIT
 '''
 import tkinter
+from tkinter import messagebox
+from core import services
 class Register:
     def __init__(self,master):
         self.master=master
@@ -18,10 +20,10 @@ class Register:
         tkinter.Label(self.wrapper,text='Date of Birth').grid(row=2,column=0)
         self.dob=tkinter.Entry(self.wrapper)
         self.dob.grid(row=2,column=1)
-        var=tkinter.IntVar()
+        self.gender=tkinter.StringVar()
         tkinter.Label(self.wrapper,text='Gender').grid(row=3,column=0)
-        self.male_radio=tkinter.Radiobutton(self.wrapper,text='Male',variable=var,value=1)
-        self.female_radio=tkinter.Radiobutton(self.wrapper,text='Female',variable=var,value=2)
+        self.male_radio=tkinter.Radiobutton(self.wrapper,text='Male',variable=self.gender,value='MALE')
+        self.female_radio=tkinter.Radiobutton(self.wrapper,text='Female',variable=self.gender,value='FEMALE')
         self.male_radio.grid(row=3,column=1)
         self.female_radio.grid(row=3,column=2)
         tkinter.Label(self.wrapper,text='Address').grid(row=4,column=0)
@@ -51,19 +53,26 @@ class Register:
     def submit(self):
         if self.checkForm():
             # Here goes the code for inserting to database
-            # Code shall be used from core.services
-            pass
+            try:
+                services.registerUser((self.firstname_entry.get(),self.lastname_entry.get(),self.dob.get(),self.gender.get(),self.contact_entry.get(),self.emailid_entry.get(),self.password_entry.get()))
+                messagebox.showinfo('Success','Congratulations!! Registration Successful')
+                print('Log: Successfully inserted the record in the REGISTER table')
+                self.reset()
+            except:
+                messagebox.showerror('SQL Error','SQL Error occurred: Check the logs rajdeep B)')
+        else:
+            messagebox.showwarning('Warning','You didn\'t fill up all the forms')
     def checkForm(self):
         if self.checkName() and self.checkDOB() and self.checkAddress() and self.checkContact() and self.checkEmail() and self.checkPassword():
             return True
         return False
     def checkName(self):
-        print('In name')
+        # print('In name')
         if self.firstname_entry.get()!='' and self.lastname_entry.get()!='': #@ TODO: Check numbers and special characters
             return True
         return False
     def checkDOB(self):
-        print('In dob')
+        # print('In dob')
         if self.dob.get()!='':
             return True
         return False

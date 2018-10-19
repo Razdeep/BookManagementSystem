@@ -20,6 +20,7 @@ def registerUser(user):
     '''For putting a tuple in Register Table'''
     conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
     conn.execute('insert into register values(?,?,?,?,?,?,?)',user)
+    conn.commit()
     conn.close()
     # @TODO: test
 
@@ -29,12 +30,17 @@ def updateUser(object):
 
 def deleteUser(object):
     '''For deleting user from REGISTER table'''
-    # @TODO
+    conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
+    conn.execute('delete from "REGISTER" where "EMAIL_ID"=?;',object)
+    # object must be a tuple like ('rrajdeeproychowdhury@gmail.com',)
+    conn.commit()
+    conn.close()
 
 def createDatabase():
     '''Creates an empty database'''
     conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
     conn.execute('CREATE TABLE IF NOT EXISTS "REGISTER" ("FIRST_NAME" TEXT,"LAST_NAME" TEXT,"DOB" TEXT,"GENDER" TEXT, "CONTACT" TEXT,"EMAIL_ID" TEXT NOT NULL UNIQUE, "PASSWORD" TEXT, PRIMARY KEY("EMAIL_ID"))')
+    conn.commit()
     conn.close()
 
 def createSampleDatabaseWithDummyData():
@@ -49,7 +55,6 @@ def createSampleDatabaseWithDummyData():
         conn.execute('insert into REGISTER values(?,?,?,?,?,?,?)',user)
     conn.commit()
     conn.close()
-    # @TODO: test
     # In case of failure use for loops
 
 def addBook():
