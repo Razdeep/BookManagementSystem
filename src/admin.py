@@ -4,6 +4,7 @@ Created on Oct 04, 2018
 Licensed Under MIT
 '''
 import tkinter
+from tkinter import ttk
 from core.services import registerUser
 from register import Register
 class Admin:
@@ -32,7 +33,12 @@ class Admin:
     def showAllUsers(self):
         self.subFrame.destroy()
         self.subFrame=tkinter.Frame(self.master,bg='red')
-        tkinter.Label(self.subFrame,text='hello').pack() # Here goes the subFrame
+        tkinter.Label(self.subFrame,text='Showing all users...').grid(row=0,column=1) # Here goes the subFrame
+        tree=ttk.Treeview(self.subFrame,columns=('col1','col2'))
+        tree.heading('col1',text='cola')
+        # tree['columns']=('cola','colb')
+        tree.insert('','end',values=('Hello',''))
+        tree.grid(row=1,column=1)
         self.subFrame.grid(row=0,column=1,rowspan=7)
         # self.subFrame.place(x=100,y=100,height=1000,width=100)
     def showAddUser(self):
