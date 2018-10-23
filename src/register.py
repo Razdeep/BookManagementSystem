@@ -61,7 +61,7 @@ class Register:
             except:
                 messagebox.showerror('SQL Error','SQL Error occurred: Check the logs rajdeep B)')
         else:
-            messagebox.showwarning('Warning','You didn\'t fill up all the forms')
+            messagebox.showwarning('Warning','You didn\'t fill up all the forms fields properly')
     def checkForm(self):
         if self.checkName() and self.checkDOB() and self.checkAddress() and self.checkContact() and self.checkEmail() and self.checkPassword():
             return True

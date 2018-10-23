@@ -5,6 +5,7 @@ Licensed Under MIT
 '''
 import tkinter
 from tkinter import ttk
+from tkinter import messagebox
 from core import services
 from core.services import registerUser
 from register import Register
@@ -17,16 +18,12 @@ class Admin:
         add_user_btn.grid(row=1,column=0)
         delete_user_btn=tkinter.Button(master,text='Delete User',command=self.showDeleteUser)
         delete_user_btn.grid(row=2,column=0)
-        update_user_btn=tkinter.Button(master,text='Update User',command=self.showUpdateUser)
-        update_user_btn.grid(row=3,column=0)
         view_order_btn=tkinter.Button(master,text='View Orders',command=self.showViewOrders)
         view_order_btn.grid(row=4,column=0)
         add_book_btn=tkinter.Button(master,text='Add Book',command=self.showAddBook)
         add_book_btn.grid(row=5,column=0)
         delete_book_btn=tkinter.Button(master,text='Delete Book',command=self.showDeleteBook)
         delete_book_btn.grid(row=6,column=0)
-        update_book_btn=tkinter.Button(master,text='Update Book',command=self.showUpdateBook)
-        update_book_btn.grid(row=7,column=0)
         self.subFrame=tkinter.Frame(master,bg='red')
         self.subFrame.grid(row=0,column=1,rowspan=7)
     
@@ -52,18 +49,13 @@ class Admin:
         self.subFrame.destroy()
         self.subFrame=tkinter.Frame(self.master)
         tkinter.Label(self.subFrame,text='Enter user email ID to delete').grid(row=0,column=0)
-        email_entry=tkinter.Entry(self.subFrame)
-        email_entry.grid(row=0,column=1)
-        cancel_btn=tkinter.Button(self.subFrame,text='Cancel')
+        self.email_entry=tkinter.Entry(self.subFrame)
+        self.email_entry.grid(row=0,column=1)
+        cancel_btn=tkinter.Button(self.subFrame,text='Cancel',command=self.cancel)
         cancel_btn.grid(row=1,column=0)
-        proceed_btn=tkinter.Button(self.subFrame,text='Proceed')
+        proceed_btn=tkinter.Button(self.subFrame,text='Proceed',command=self.deleteUser)
         proceed_btn.grid(row=1,column=1)
         self.subFrame.grid(row=0,column=1,rowspan=7)
-    def showUpdateUser(self): pass # Hard to be implemented
-        # self.subFrame.destroy()
-        # self.subFrame=tkinter.Frame(self.master)
-        # tkinter.Label(self.subFrame,text='Enter user email ID to delete').grid(row=0,column=0)
-        # self.subFrame.grid(row=0,column=1,rowspan=7)
     def showViewOrders(self):pass
     def showAddBook(self):
         self.subFrame.destroy()
@@ -96,9 +88,19 @@ class Admin:
         reset_btn.grid(row=3,column=1)
         self.subFrame.grid(row=0,column=1,rowspan=7)
     def showUpdateBook(self):pass
+    def cancel(self):
+        self.subFrame.destroy()
 
     #bunch of actions called by the callbacks
-    
+    def deleteUser(self):
+        if self.email_entry.get()!='':
+            arg=(self.email_entry.get(),)
+            if(services.deleteUser(arg)):
+                messagebox.showinfo('Success','Record having email '+self.email_entry.get()+' has been deleted ')
+            else:
+                messagebox.showerror('Failed','Couldn\'t delete the record. Contact support team')
+        else:
+            messagebox.showinfo('Missing field','Please check that you have filled all the fields correctly.')
 
 
 

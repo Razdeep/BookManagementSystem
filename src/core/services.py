@@ -18,10 +18,14 @@ def isValidCredential(emailId,password):
 
 def registerUser(user):
     '''For putting a tuple in Register Table'''
-    conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
-    conn.execute('insert into register values(?,?,?,?,?,?,?)',user)
-    conn.commit()
-    conn.close()
+    try:
+        conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
+        conn.execute('insert into register values(?,?,?,?,?,?,?)',user)
+        conn.commit()
+        conn.close()
+        return True
+    except:
+        return False
     # @TODO: test
 
 def updateUser(object):
@@ -30,11 +34,15 @@ def updateUser(object):
 
 def deleteUser(emailID):
     '''For deleting user from REGISTER table'''
-    conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
-    conn.execute('delete from "REGISTER" where "EMAIL_ID"=?;',emailID)
-    # object must be a tuple like ('rrajdeeproychowdhury@gmail.com',)
-    conn.commit()
-    conn.close()
+    try:
+        conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
+        conn.execute('delete from "REGISTER" where "EMAIL_ID"=?;',emailID)
+        # argument must be a tuple like ('rrajdeeproychowdhury@gmail.com',)
+        conn.commit()
+        conn.close()
+        return True
+    except:
+        return False
 
 def createDatabase():
     '''Creates an empty database'''
