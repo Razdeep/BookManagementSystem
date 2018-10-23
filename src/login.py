@@ -1,4 +1,5 @@
 import tkinter
+from tkinter import messagebox
 from core.services import isValidCredential
 from forgot_password import Forgot_Pswd
 from homescreen import HomeScreen
@@ -24,6 +25,7 @@ class Login:
             print('Login successful')
             self.showHomeScreen()
         else:
+            messagebox.showwarning('Login Failed', 'Incorrect credentials provided. Please try again')
             print('Login failed')
     def showForgotPassword(self):
         self.wrapper.destroy()

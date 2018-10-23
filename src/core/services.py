@@ -28,10 +28,6 @@ def registerUser(user):
         return False
     # @TODO: test
 
-def updateUser(object):
-    '''For updating user'''
-    # to be implemented at last
-
 def deleteUser(emailID):
     '''For deleting user from REGISTER table'''
     try:
@@ -65,16 +61,24 @@ def createSampleDatabaseWithDummyData():
     conn.close()
     # In case of failure use for loops
 
-def addBook():
-    pass
-
-def updateBook():
-    pass
+def addBook(book): # Corrupted function here... FIX THIS
+    '''For adding book to BOOK table'''
+    # NOTE: HERE 'book' is a tuple. Handle it carefully
+    try:
+        conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
+        conn.execute(';',book) # @TODO: IMPLEMENT ASAP
+        # argument must be a tuple like SOMETHING
+        conn.commit()
+        conn.close()
+        return True
+    except:
+        return False
 
 def deleteBook():
     pass
 
 if __name__=='__main__':
+    # For testing only
     if isValidCredential('raj','raj'):
         print('User ID : raj')
         print('Password : raj')

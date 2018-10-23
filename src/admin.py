@@ -9,6 +9,7 @@ from tkinter import messagebox
 from core import services
 from core.services import registerUser
 from register import Register
+
 class Admin:
     def __init__(self,master):
         self.master=master
@@ -56,20 +57,20 @@ class Admin:
         proceed_btn=tkinter.Button(self.subFrame,text='Proceed',command=self.deleteUser)
         proceed_btn.grid(row=1,column=1)
         self.subFrame.grid(row=0,column=1,rowspan=7)
-    def showViewOrders(self):pass
+    def showViewOrders(self):pass # @TODO: TO BE IMPLEMENTED AS SOON AS TREEVIEW IS SORTED OUT
     def showAddBook(self):
         self.subFrame.destroy()
         self.subFrame=tkinter.Frame(self.master,borderwidth=1,relief='solid')
         tkinter.Label(self.subFrame,text='Enter Book Name to be added').grid(row=0,column=0)
-        book_name_entry=tkinter.Entry(self.subFrame)
-        book_name_entry.grid(row=0,column=1)
+        self.book_name_entry=tkinter.Entry(self.subFrame)
+        self.book_name_entry.grid(row=0,column=1)
         tkinter.Label(self.subFrame,text='Enter Book Author').grid(row=1,column=0)
-        book_author_entry=tkinter.Entry(self.subFrame)
-        book_author_entry.grid(row=1,column=1)
+        self.book_author_entry=tkinter.Entry(self.subFrame)
+        self.book_author_entry.grid(row=1,column=1)
         tkinter.Label(self.subFrame,text='Enter Amount').grid(row=2,column=0)
-        amount_entry=tkinter.Entry(self.subFrame)
-        amount_entry.grid(row=2,column=1)
-        proceed_btn=tkinter.Button(self.subFrame,text='Proceed')
+        self.amount_entry=tkinter.Entry(self.subFrame)
+        self.amount_entry.grid(row=2,column=1)
+        proceed_btn=tkinter.Button(self.subFrame,text='Proceed',command=self.addBook)
         proceed_btn.grid(row=3,column=0)
         reset_btn=tkinter.Button(self.subFrame,text='Reset')
         reset_btn.grid(row=3,column=1)
@@ -82,10 +83,11 @@ class Admin:
         tkinter.Label(self.subFrame,text='Enter Book Name to delete').grid(row=0,column=0)
         book_name_entry=tkinter.Entry(self.subFrame)
         book_name_entry.grid(row=0,column=1)
+        cancel_btn=tkinter.Button(self.subFrame,text='Cancel',command=self.cancel)
+        cancel_btn.grid(row=3,column=0)
         proceed_btn=tkinter.Button(self.subFrame,text='Proceed')
-        proceed_btn.grid(row=3,column=0)
-        reset_btn=tkinter.Button(self.subFrame,text='Reset')
-        reset_btn.grid(row=3,column=1)
+        proceed_btn.grid(row=3,column=1)
+        
         self.subFrame.grid(row=0,column=1,rowspan=7)
     def showUpdateBook(self):pass
     def cancel(self):
@@ -94,6 +96,7 @@ class Admin:
     #bunch of actions called by the callbacks
     def deleteUser(self):
         if self.email_entry.get()!='':
+            # Making a tuple
             arg=(self.email_entry.get(),)
             if(services.deleteUser(arg)):
                 messagebox.showinfo('Success','Record having email '+self.email_entry.get()+' has been deleted ')
@@ -101,7 +104,14 @@ class Admin:
                 messagebox.showerror('Failed','Couldn\'t delete the record. Contact support team')
         else:
             messagebox.showinfo('Missing field','Please check that you have filled all the fields correctly.')
-
+    def addBook(self):
+        if self.book_name_entry.get()!='' and self.book_author_entry!='' and self.amount_entry!='':
+            # Here goes the code for code module
+            # Creating the argument tuple
+            book=(self.book_name_entry.get(),self.book_author_entry.get(),self.amount_entry.get())
+            services.addBook(book)
+        else:
+            messagebox.showinfo('Missing field','Please check that you have filled all the fields correctly.')
 
 
 if __name__=='__main__':

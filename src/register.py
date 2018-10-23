@@ -46,8 +46,8 @@ class Register:
         self.reset_btn=tkinter.Button(self.wrapper,text='Reset',command=self.reset)
         self.reset_btn.grid(row=9,column=1)
         # For debugging only 
-        self.test=tkinter.Button(self.wrapper,text='Test',command=self.checkEmail)
-        self.test.grid(row=10,column=1)
+        # self.test=tkinter.Button(self.wrapper,text='Test',command=self.checkEmail)
+        # self.test.grid(row=10,column=1)
         # Comment the above part at the time of production 
         
     def submit(self):
