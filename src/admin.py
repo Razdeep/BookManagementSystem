@@ -5,6 +5,7 @@ Licensed Under MIT
 '''
 import tkinter
 from tkinter import ttk
+from core import services
 from core.services import registerUser
 from register import Register
 class Admin:
@@ -95,6 +96,9 @@ class Admin:
         reset_btn.grid(row=3,column=1)
         self.subFrame.grid(row=0,column=1,rowspan=7)
     def showUpdateBook(self):pass
+
+    #bunch of actions called by the callbacks
+    
 
 
 

@@ -28,10 +28,10 @@ def updateUser(object):
     '''For updating user'''
     # to be implemented at last
 
-def deleteUser(object):
+def deleteUser(emailID):
     '''For deleting user from REGISTER table'''
     conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
-    conn.execute('delete from "REGISTER" where "EMAIL_ID"=?;',object)
+    conn.execute('delete from "REGISTER" where "EMAIL_ID"=?;',emailID)
     # object must be a tuple like ('rrajdeeproychowdhury@gmail.com',)
     conn.commit()
     conn.close()

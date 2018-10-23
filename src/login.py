@@ -2,6 +2,7 @@ import tkinter
 from core.services import isValidCredential
 from forgot_password import Forgot_Pswd
 from homescreen import HomeScreen
+from submit import Submit
 class Login:
     def __init__(self,master):
         self.master=master
@@ -32,7 +33,8 @@ class Login:
     def showHomeScreen(self):
         self.wrapper.destroy()
         self.wrapper=tkinter.Frame(self.master)
-        HomeScreen(self.wrapper)
+        # HomeScreen(self.wrapper)
+        Submit(self.wrapper)
         self.wrapper.grid(row=0,column=0)
             
 
