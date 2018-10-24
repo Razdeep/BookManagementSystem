@@ -7,7 +7,6 @@ import tkinter
 from tkinter import ttk
 from tkinter import messagebox
 from core import services
-from core.services import registerUser
 from register import Register
 
 class Admin:
@@ -29,9 +28,9 @@ class Admin:
         self.subFrame.grid(row=0,column=1,rowspan=7)
     
     #Bunch of button callbacks
-    def showAllUsers(self):
+    def showAllUsers(self): # @TODO: IMPLEMENT SCROLL VIEW HERE
         self.subFrame.destroy()
-        self.subFrame=tkinter.Frame(self.master,bg='red')
+        self.subFrame=tkinter.Frame(self.master,bg='purple1')
         tkinter.Label(self.subFrame,text='Showing all users...').grid(row=0,column=1) # Here goes the subFrame
         tree=ttk.Treeview(self.subFrame,columns=('FIRST_NAME','LAST_NAME','DOB','GENDER','CONTACT','EMAIL_ID','PASSWORD'))
         tree.heading('FIRST_NAME',text='Name')
@@ -42,14 +41,14 @@ class Admin:
         tree.heading('EMAIL_ID',text='Email')
         tree.heading('PASSWORD',text='Password')
         tree.column('#0',width=2)
-        tree.column('FIRST_NAME',width=20)
-        tree.column('LAST_NAME',width=20)
-        tree.column('DOB',width=10)
-        tree.column('GENDER',width=10)
-        tree.column('CONTACT',width=10)
-        tree.column('EMAIL_ID',width=10)
-        tree.column('PASSWORD',width=10)
-        # tree.insert('','end',values=('data1','data2'))
+        TEMPWIDTH=100
+        tree.column('FIRST_NAME',width=TEMPWIDTH)
+        tree.column('LAST_NAME',width=TEMPWIDTH)
+        tree.column('DOB',width=TEMPWIDTH)
+        tree.column('GENDER',width=TEMPWIDTH)
+        tree.column('CONTACT',width=TEMPWIDTH)
+        tree.column('EMAIL_ID',width=TEMPWIDTH)
+        tree.column('PASSWORD',width=TEMPWIDTH)
         userDataList=services.fetchUsers()
         for data in userDataList:
             tree.insert('','end',values=data)

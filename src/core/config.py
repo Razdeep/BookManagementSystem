@@ -8,8 +8,8 @@ Licensed Under MIT
 All the configurations goes here
 To use these as global config, use "from core.config import *"
 '''
-DISPLAY_WIDTH=800
-DISPLAY_HEIGHT=600
+DISPLAY_WIDTH=1366
+DISPLAY_HEIGHT=768
 OFFSET_WIDTH=300
 OFFSET_HEIGHT=100
 X_WINDOW=DISPLAY_WIDTH//2-OFFSET_WIDTH
