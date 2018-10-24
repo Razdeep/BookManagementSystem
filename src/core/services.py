@@ -29,7 +29,9 @@ def registerUser(user):
     # @TODO: test
 
 def deleteUser(emailID):
-    '''For deleting user from REGISTER table'''
+    '''For deleting user from REGISTER table
+    Important: object must be a tuple, and not strings
+    '''
     try:
         conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
         conn.execute('delete from "REGISTER" where "EMAIL_ID"=?;',emailID)
