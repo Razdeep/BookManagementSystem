@@ -36,7 +36,7 @@ class Admin:
         tree=ttk.Treeview(self.subFrame,columns=('col1','col2'))
         tree.heading('col1',text='cola')
         # tree['columns']=('cola','colb')
-        tree.insert('','end',values=('Hello',''))
+        tree.insert('','end',text=('data1','data2'))
         tree.grid(row=1,column=1)
         self.subFrame.grid(row=0,column=1,rowspan=7)
         # self.subFrame.place(x=100,y=100,height=1000,width=100)

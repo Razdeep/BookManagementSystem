@@ -77,6 +77,19 @@ def addBook(book): # Corrupted function here... FIX THIS
 def deleteBook():
     pass
 
+def changePassword(object):
+    '''For updating password in the REGISTER table
+         Argument(object) must be a tuple like (newPassword,email)'''
+    try:
+        conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
+        conn.execute('UPDATE "REGISTER" SET "PASSWORD"=? WHERE "EMAIL_ID"=?;',object)
+        # argument must be a tuple like SOMETHING
+        conn.commit()
+        conn.close()
+        return True
+    except:
+        return False
+
 if __name__=='__main__':
     # For testing only
     if isValidCredential('raj','raj'):
