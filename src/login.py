@@ -35,8 +35,8 @@ class Login:
     def showHomeScreen(self):
         self.wrapper.destroy()
         self.wrapper=tkinter.Frame(self.master)
-        # HomeScreen(self.wrapper)
-        Submit(self.wrapper)
+        HomeScreen(self.wrapper)
+        # Submit(self.wrapper)
         self.wrapper.grid(row=0,column=0)
             
 
