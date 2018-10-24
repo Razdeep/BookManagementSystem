@@ -92,6 +92,15 @@ def changePassword(object):
     except:
         return False
 
+def fetchUsers():
+    '''Returns a list of User objects from the REGISTER table'''
+    try:
+        conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
+        rs=conn.execute('SELECT * FROM REGISTER')
+        return rs
+    except:
+        return None
+
 if __name__=='__main__':
     # For testing only
     if isValidCredential('raj','raj'):
