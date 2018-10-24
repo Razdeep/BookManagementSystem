@@ -24,6 +24,8 @@ class Admin:
         add_book_btn.grid(row=5,column=0)
         delete_book_btn=tkinter.Button(master,text='Delete Book',command=self.showDeleteBook,width=15,height=2)
         delete_book_btn.grid(row=6,column=0)
+        show_books_btn=tkinter.Button(master,text='Show Books',command=self.showBooks,width=15,height=2)
+        show_books_btn.grid(row=7,column=0)
         self.subFrame=tkinter.Frame(master,bg='red')
         self.subFrame.grid(row=0,column=1,rowspan=7)
     
@@ -90,21 +92,18 @@ class Admin:
         reset_btn=tkinter.Button(self.subFrame,text='Reset')
         reset_btn.grid(row=3,column=1)
         self.subFrame.grid(row=0,column=1,rowspan=7)
-        # @TODO: enhancements
-
     def showDeleteBook(self):
         self.subFrame.destroy()
         self.subFrame=tkinter.Frame(self.master,borderwidth=1,relief='solid')
         tkinter.Label(self.subFrame,text='Enter Book Name to delete').grid(row=0,column=0)
-        book_name_entry=tkinter.Entry(self.subFrame)
-        book_name_entry.grid(row=0,column=1)
+        self.book_name_entry=tkinter.Entry(self.subFrame)
+        self.book_name_entry.grid(row=0,column=1)
         cancel_btn=tkinter.Button(self.subFrame,text='Cancel',command=self.cancel)
         cancel_btn.grid(row=3,column=0)
-        proceed_btn=tkinter.Button(self.subFrame,text='Proceed')
+        proceed_btn=tkinter.Button(self.subFrame,text='Proceed',command=self.deleteBook)
         proceed_btn.grid(row=3,column=1)
         
         self.subFrame.grid(row=0,column=1,rowspan=7)
-    def showUpdateBook(self):pass
     def cancel(self):
         self.subFrame.destroy()
 
@@ -124,10 +123,40 @@ class Admin:
             # Here goes the code for code module
             # Creating the argument tuple
             book=(self.book_name_entry.get(),self.book_author_entry.get(),self.amount_entry.get())
-            services.addBook(book)
+            if(services.addBook(book)):
+                messagebox.showinfo('Success','Successfully added '+self.book_name_entry.get()+' to database')
+            else:
+                messagebox.showerror('Failed','Couldn\'t add book. Contact support team')
         else:
             messagebox.showinfo('Missing field','Please check that you have filled all the fields correctly.')
-
+    def deleteBook(self):
+        if self.book_name_entry.get()!='':
+            # Making a tuple
+            bookName=(self.book_name_entry.get(),)
+            if services.deleteBook(bookName):
+                messagebox.showinfo('Success','Successfully deleted '+self.book_name_entry.get()+' from the database')
+            else:
+                messagebox.showerror('Failed','Couldn\'t delete book. Contact support team')
+        else:
+            messagebox.showinfo('Missing field','Please check that you have filled all the fields correctly.')
+    def showBooks(self):
+        self.subFrame.destroy()
+        self.subFrame=tkinter.Frame(self.master,bg='purple1')
+        tkinter.Label(self.subFrame,text='Showing all users...').grid(row=0,column=1) # Here goes the subFrame
+        tree=ttk.Treeview(self.subFrame,columns=('BOOK_NAME','BOOK_AUTHOR','AMOUNT'))
+        tree.heading('BOOK_NAME',text='Book Name')
+        tree.heading('BOOK_AUTHOR',text='Author')
+        tree.heading('AMOUNT',text='Amount')
+        tree.column('#0',width=2)
+        TEMPWIDTH=100
+        tree.column('BOOK_NAME',width=TEMPWIDTH)
+        tree.column('BOOK_AUTHOR',width=TEMPWIDTH)
+        tree.column('AMOUNT',width=TEMPWIDTH)
+        bookDataList=services.fetchBooks()
+        for data in bookDataList:
+            tree.insert('','end',values=data)
+        tree.grid(row=1,column=1)
+        self.subFrame.grid(row=0,column=1,rowspan=7)
 
 if __name__=='__main__':
     master=tkinter.Tk()

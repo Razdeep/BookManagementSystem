@@ -26,7 +26,6 @@ def registerUser(user):
         return True
     except:
         return False
-    # @TODO: test
 
 def deleteUser(emailID):
     '''For deleting user from REGISTER table
@@ -44,31 +43,42 @@ def deleteUser(emailID):
 
 def createDatabase():
     '''Creates an empty database'''
-    conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
-    conn.execute('CREATE TABLE IF NOT EXISTS "REGISTER" ("FIRST_NAME" TEXT,"LAST_NAME" TEXT,"DOB" TEXT,"GENDER" TEXT, "CONTACT" TEXT,"EMAIL_ID" TEXT NOT NULL UNIQUE, "PASSWORD" TEXT, PRIMARY KEY("EMAIL_ID"))')
-    conn.commit()
-    conn.close()
+    try:
+        conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
+        conn.execute('CREATE TABLE IF NOT EXISTS "REGISTER" ("FIRST_NAME" TEXT,"LAST_NAME" TEXT,"DOB" TEXT,"GENDER" TEXT, "CONTACT" TEXT,"EMAIL_ID" TEXT NOT NULL UNIQUE, "PASSWORD" TEXT, PRIMARY KEY("EMAIL_ID"))')
+        # Create BOOKS table
+        conn.execute('CREATE TABLE IF NOT EXISTS "BOOKS"("BOOK_NAME" TEXT NOT NULL,"BOOK_AUTHOR" TEXT NOT NULL,"AMOUNT"	TEXT NOT NULL);')
+        conn.commit()
+        conn.close()
+        return True
+    except:
+        return False
 
 def createSampleDatabaseWithDummyData():
     '''Creates dummy a sample database with dummy data'''
-    createDatabase()
-    userList=[('Rajdeep','Roy Chowdhury','21-07-2000','MALE','9674810029','rrajdeeproychowdhury@gmail.com','password'),
-                ('Bishakha', 'Jain','01-01-1999','FEMALE','7397472323','bishakhaajain@gmail.com','password'),
-                ('Riya','Garg','01-01-1999','FEMALE','217863821','riyagargsomething@gmail.com','password')]
-    conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
-    # conn.executemany('insert into REGISTER values(?,?,?,?,?,?,?)',userList)
-    for user in userList:
-        conn.execute('insert into REGISTER values(?,?,?,?,?,?,?)',user)
-    conn.commit()
-    conn.close()
+    try:
+        createDatabase()
+        userList=[('Rajdeep','Roy Chowdhury','21-07-2000','MALE','9674810029','rrajdeeproychowdhury@gmail.com','password'),
+                    ('Bishakha', 'Jain','01-01-1999','FEMALE','7397472323','bishakhaajain@gmail.com','password'),
+                    ('Riya','Garg','01-01-1999','FEMALE','217863821','riyagargsomething@gmail.com','password')]
+        conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
+        # conn.executemany('insert into REGISTER values(?,?,?,?,?,?,?)',userList)
+        for user in userList:
+            conn.execute('insert into REGISTER values(?,?,?,?,?,?,?)',user)
+        conn.commit()
+        conn.close()
+        return True
+    except:
+        return False
     # In case of failure use for loops
 
 def addBook(book): # Corrupted function here... FIX THIS
-    '''For adding book to BOOK table'''
+    '''For adding book to BOOK table.
+        Argument pattern(tuple): ('BOOK_NAME','BOOK_AUTHOR','AMOUNT')'''
     # NOTE: HERE 'book' is a tuple. Handle it carefully
     try:
         conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
-        conn.execute(';',book) # @TODO: IMPLEMENT ASAP
+        conn.execute('INSERT INTO "BOOKS" VALUES(?,?,?)',book) # @TODO: IMPLEMENT ASAP
         # argument must be a tuple like SOMETHING
         conn.commit()
         conn.close()
@@ -76,8 +86,31 @@ def addBook(book): # Corrupted function here... FIX THIS
     except:
         return False
 
-def deleteBook():
-    pass
+def deleteBook(bookName):
+    '''
+    For deleting book from BOOKS table
+    Important: object must be a tuple, and not strings.
+    Argument pattern(Tuple): ('BOOK_NAME',)
+    '''
+    try:
+        conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
+        conn.execute('delete from "BOOKS" where "BOOK_NAME"=?;',bookName)
+        # argument must be a tuple like ('rrajdeeproychowdhury@gmail.com',)
+        conn.commit()
+        conn.close()
+        return True
+    except:
+        return False
+def fetchBooks():
+    '''
+    return a resultset(list of tuples) from the BOOKS table
+    '''
+    try:
+        conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
+        rs=conn.execute('SELECT * FROM BOOKS')
+        return rs
+    except:
+        return None
 
 def changePassword(object):
     '''For updating password in the REGISTER table
