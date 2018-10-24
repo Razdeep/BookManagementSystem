@@ -11,7 +11,13 @@ from register import Register
 
 class Admin:
     def __init__(self,master):
+        # Styling constants declaration starts here
+        BG="light coral"
+        FONT=('Comic Sans MS',13)
+        FG="dark blue"
+        # Styling constants ends
         self.master=master
+        self.master.config(bg=BG)
         show_all_users_btn=tkinter.Button(master,text='Show all users',command=self.showAllUsers,width=15,height=2)
         show_all_users_btn.grid(row=0,column=0)
         add_user_btn=tkinter.Button(master,text='Add user',command=self.showAddUser,width=15,height=2)
