@@ -23,11 +23,12 @@ class Forgot_Pswd:
         def __init__(self,master):
                 self.master=master
                 self.subbody=tkinter.Frame(self.master)
+                self.subbody.config(bg='yellow3')
                 self.subbody.pack()
-                tkinter.Label(self.subbody, text="New Password ").grid(row=0,column=0)
+                tkinter.Label(self.subbody, text="New Password ",bg='yellow3').grid(row=0,column=0)
                 self.newpswd_entry=tkinter.Entry(self.subbody, bd=2)
                 self.newpswd_entry.grid(row=0,column=1)
-                tkinter.Label(self.subbody, text="Confirm New Password: ").grid(row=1,column=0)
+                tkinter.Label(self.subbody, text="Confirm New Password: ",bg='yellow3').grid(row=1,column=0)
                 self.cnfpswd_entry=tkinter.Entry(self.subbody, bd=2)
                 self.cnfpswd_entry.grid(row=1,column=1)
                 reset_btn=tkinter.Button(self.subbody,text='Reset Password',command=self.call,relief=tkinter.RAISED)

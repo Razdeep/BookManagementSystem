@@ -19,11 +19,11 @@ class MainWindow:
         master.config(background='purple1')
 
         navbar=tkinter.Frame(master)
-        login_nav=tkinter.Button(navbar,text='Login Here',padx=15,pady=15,command=self.showLoginHere)
+        login_nav=tkinter.Button(navbar,text='Login Here',padx=15,pady=15,bg='gold',command=self.showLoginHere)
         login_nav.grid(row=0,column=0)
-        register_nav=tkinter.Button(navbar,text='Register Here',padx=15,pady=15,command=self.showRegisterHere)
+        register_nav=tkinter.Button(navbar,text='Register Here',padx=15,pady=15,bg='gold',command=self.showRegisterHere)
         register_nav.grid(row=0,column=1)
-        admin_nav=tkinter.Button(navbar,text='Admin Portal',padx=15,pady=15,command=self.showAdminPortal)
+        admin_nav=tkinter.Button(navbar,text='Admin Portal',padx=15,pady=15,bg='gold',command=self.showAdminPortal)
         admin_nav.grid(row=0,column=2)
         navbar.place(x=0,y=0)
 
