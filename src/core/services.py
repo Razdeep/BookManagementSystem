@@ -134,6 +134,15 @@ def fetchUsers():
     except:
         return None
 
+def transact(order): # @FIX THIS
+    '''Saves a transaction to ORDERS table'''
+    try:
+        conn=sqlite3.connect('data.db') # @TODO: replaced by global variable
+        rs=conn.execute('INSERT INTO "ORDERS" VALUES(?,?,?)',order)
+        return True
+    except:
+        return False
+
 if __name__=='__main__':
     # For testing only
     if isValidCredential('raj','raj'):
