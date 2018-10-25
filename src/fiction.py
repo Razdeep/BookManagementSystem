@@ -2,70 +2,71 @@ import tkinter
 
 class fiction_books:
         def __init__(self,master):
-                
-                sciencefiction_btn=tkinter.Button(master,text='Science Fiction',command=self.showScienceFiction,width=15,relief=tkinter.RAISED)
+                master.config(bg="OliveDrab1")
+                sciencefiction_btn=tkinter.Button(master,text='Science Fiction',bg="OliveDrab2",font=('Comic Sans MS',18),command=self.showScienceFiction,width=13,relief=tkinter.RAISED)
                 sciencefiction_btn.grid(row=1,column=1)
-                satire_btn=tkinter.Button(master,text='Satire',command=self.showsatire,width=15,relief=tkinter.RAISED)
+                satire_btn=tkinter.Button(master,text='Satire',bg="OliveDrab2",font=('Comic Sans MS',18),command=self.showsatire,width=13,relief=tkinter.RAISED)
                 satire_btn.grid(row=2,column=1)
-                drama_btn=tkinter.Button(master,text='Drama',command=self.showdrama,width=15,relief=tkinter.RAISED)
+                drama_btn=tkinter.Button(master,text='Drama',bg="OliveDrab2",font=('Comic Sans MS',18),command=self.showdrama,width=13,relief=tkinter.RAISED)
                 drama_btn.grid(row=3,column=1)
-                adventure_btn=tkinter.Button(master,text='Adventure',command=self.showadventure,width=15,relief=tkinter.RAISED)
+                adventure_btn=tkinter.Button(master,text='Adventure',bg="OliveDrab2",font=('Comic Sans MS',18),command=self.showadventure,width=13,relief=tkinter.RAISED)
                 adventure_btn.grid(row=4,column=1)
-                romance_btn=tkinter.Button(master,text='Romance',command=self.showromance,width=15,relief=tkinter.RAISED)
+                romance_btn=tkinter.Button(master,text='Romance',bg="OliveDrab2",font=('Comic Sans MS',18),command=self.showromance,width=13,relief=tkinter.RAISED)
                 romance_btn.grid(row=5,column=1)
-                mystery_btn=tkinter.Button(master,text='Mystery',command=self.showmystery,width=15,relief=tkinter.RAISED)
+                mystery_btn=tkinter.Button(master,text='Mystery',bg="OliveDrab2",font=('Comic Sans MS',18),command=self.showmystery,width=13,relief=tkinter.RAISED)
                 mystery_btn.grid(row=6,column=1)
-                poetry_btn=tkinter.Button(master,text='Poetry',command=self.showpoetry,width=15,relief=tkinter.RAISED)
+                poetry_btn=tkinter.Button(master,text='Poetry',bg="OliveDrab2",font=('Comic Sans MS',18),command=self.showpoetry,width=13,relief=tkinter.RAISED)
                 poetry_btn.grid(row=7,column=1)
-                horror_btn=tkinter.Button(master,text='Horror',command=self.showhorror,width=15,relief=tkinter.RAISED)
+                horror_btn=tkinter.Button(master,text='Horror',bg="OliveDrab2",font=('Comic Sans MS',18),command=self.showhorror,width=13,relief=tkinter.RAISED)
                 horror_btn.grid(row=8,column=1)
-                comics_btn=tkinter.Button(master,text='Comics',command=self.showcomic,width=15,relief=tkinter.RAISED)
+                comics_btn=tkinter.Button(master,text='Comics',bg="OliveDrab2",font=('Comic Sans MS',18),command=self.showcomic,width=13,relief=tkinter.RAISED)
                 comics_btn.grid(row=9,column=1)
-                self.Lb1=tkinter.Listbox(master)
-                self.Lb1.grid(row=1,column=2,rowspan=6)
+                self.Lb1=tkinter.Listbox(master,width=25,height=30)
+                self.Lb1.grid(row=1,column=2,rowspan=12)
         def put(self,lst):
                 self.Lb1.delete(0,tkinter.END)
                 for i in range(len(lst)):
                         self.Lb1.insert(i,lst[i])
         def showScienceFiction(self):
-                lst=['All the Birds in the Sky by CHARLIE JANE ANDERS','Amatka by KARIN TIDBECK','Ammonite by NICOLA GRIFFITH','Anathem by NEAL STEPHENSON','Ancillary Justice by ANN LECKIE','The Best of All Possible Worlds by KAREN LORD','Binti by NNEDI OKORAFOR','Foundation by Isaac Asimov','Nineteen Eighty-Four by George Orwel','Odd John by Olaf Stapledon ']
+                lst=['The Adversary','Parallax','Omni-Man','Annihilus','Omega Red','Despero','Violator','Mastermind','MODOK','Fin Fang Foom','Moon Knight','Astonishing X-Men','Justice League Of America','New Avengers','Batman','Amazing Spider Man','Action Comics','The Incredible Hulk','Wolverine','The Ultimates','Teen Titans','All the Birds in the Sky ','Amatka ','Ammonite','Anathem','Ancillary Justice','The Best of All Possible Worlds','Binti','Foundation','Nineteen Eighty-Four','Odd John']
                 self.put(lst)
         def showsatire(self):
 
-                lst=[' Brave New World by Aldous Huxley','The Hitchhiker’s Guide to the Galaxy by Douglas Adams','Don Quixote by Miguel de Cervantes','White Noise by Don DeLillo','The Pearl of Kuwait by Tom Paine','MASH by Richard Hooker','Machine Man by Max Barry','I Am America! And So Can You! by Stephen Colbert','The Adventures of Huckleberry Finn by Mark Twain','1984 by George Orwell']
+                lst=['The Adversary','Parallax','Omni-Man','Annihilus','Omega Red','Despero','Violator','Mastermind','MODOK','Fin Fang Foom','Moon Knight','Astonishing X-Men','Justice League Of America','Stars','You are in','Attack of the Movies','After All?','Screening at Stores','GDC 2005','E3 2005','Preview','Designed for Fame','ECTS 2003','Canned','High Res','Activision',' Brave New World','Guide to the Galaxy','Don Quixote','White Noise','The Pearl of Kuwait','MASH','Machine Man','I Am America! ','The Adventures of Huckleberry','1984 ']
                 self.put(lst)
         def showdrama(self):
 
-                lst=['Othello by William Shakespeare','Random Harvest: A Novel by James Hilton','Julius Caesar by William Shakespeare','The Good Luck Charm by Helena Hunting','A Raisin in the Sun by Lorraine Hansberry','The Perfect Couple by Elin Hilderbrand','Romeo and Juliet by William Shakespeare','The Crucible: A Play in Four Acts by Arthur Miller','The Kiss Quotient by Helen Hoang','Hamilton: The Revolution by Lin-Manuel Miranda']
+                lst=['Home Movies','The 7 ½ Deaths of Evelyn Hardcastle','EVERYTHING I NEVER TOLD YOU','WHITE TEARS','REBECCA','MR. PENUMBRA’S 24-HOUR BOOKSTORE','THE HIDDEN KEYS','BEHIND THE SCENES AT THE MUSEUM KINSON','Why Mummy Swears','Anatomy of a Scandal','Kintu','An Unsuitable Match','A Ration Book Christmas','The Year That Changed Everything','Trap','The Mum Who Had Enough','The Lion Tamer Who Lost','Othello','Random Harvest','Julius Caesar','The Good Luck Charm','A Raisin in the Sun','The Perfect Couple','Romeo and Juliet','The Crucible','The Kiss Quotient','Hamilton']
                 self.put(lst)
         def showadventure(self):
 
-                lst=['THE RAVEN BOYS BY MAGGIE STIEFVATER','FINNIKIN OF THE ROCK BY MELINA MARCHETTA','SHADOWSHAPER BY DANIEL JOSÉ OLDER','AMERICAN GODS BY NEIL GAIMAN','MR. PENUMBRA’S 24-HOUR BOOKSTORE BY ROBIN SLOAN','LIFE OF PI BY YANN MARTEL','READY PLAYER ONE BY ERNEST CLINE','THE LIMINAL WAR BY AYIZE JAMA-EVERETT','THE DARKEST PART OF THE FOREST BY HOLLY BLACK','ESCAPE FROM BAGHDAD BY SAAD Z. HOSSAIN']
+                lst=['The Adversary','Parallax','Omni-Man','Annihilus','Omega Red','Despero','Violator','Mastermind','MODOK','Fin Fang Foom','Moon Knight','Astonishing X-Men','Justice League Of America','New Avengers','Batman','Amazing Spider Man','Action Comics','The Incredible Hulk','Wolverine','The Ultimates','Teen Titans','THE RAVEN BOYS','FINNIKIN OF THE ROCK','SHADOWSHAPER','AMERICAN GODS','MR. PENUMBRAS BOOKSTORE','LIFE OF PI','READY PLAYER ONE','THE LIMINAL WAR','THE DARKEST PART OF THE FOREST','ESCAPE FROM BAGHDAD']
                 self.put(lst)
         def showromance(self):
 
-                lst=['WHEN DIMPLE MET RISHI BY SANDHYA MENON','EVERYTHING LEADS TO YOU BY NINA LACOUR','MY SO-CALLED BOLLYWOOD LIFE BY NISHA SHARMA','AUTOBOYOGRAPHY BY CHRISTINA LAUREN','ANNA AND THE FRENCH KISS BY STEPHANIE PERKINS','THE SUMMER OF JORDI PEREZ (AND THE BEST BURGER IN LOS ANGELES) BY AMY SPALDING','TO ALL THE BOYS I’VE LOVED BEFORE BY JENNY HAN','THE SUN IS ALSO A STAR BY NICOLA YOON','JUST ONE DAY BY GAYLE FORMAN','THIS LULLABY BY SARAH DESSEN']
+                lst=['THE SUMMER OF SLOANE','99 DAYS','THE HEARTBREAKERS','THE WEIGHT OF FEATHERS','PLAIN VANILLA','THE DISTANCE FROM A TO Z','LETTERS TO THE LOST ','THE VICTORIA IN MY HEAD ','LIVING VIOLET','THE SUMMER OF US','The Family Tabor','IF I WAS YOUR GIRL','FIVE STAR BILLIONAIRE','THE INCARNATIONS ','LOVE MEDICINE ','BEHOLD THE DREAMERS','SONG OF SOLOMON','EVERYTHING I NEVER TOLD YOU ','AMERICANAH','THERE THERE ','WHEN DIMPLE MET RISHI','EVERYTHING LEADS TO YOU','MY SO-CALLED BOLLYWOOD LIFE','AUTOBOYOGRAPHY','ANNA AND THE FRENCH KISS','THE SUMMER OF JORDI PEREZ','TO ALL THE BOYS I’VE LOVED BEFORE','THE SUN IS ALSO A STAR','JUST ONE DAY','THIS LULLABY']
                 self.put(lst)
         def showmystery(self):
 
-                lst=['The 7 ½ Deaths of Evelyn Hardcastle by Stuart Turton','EVERYTHING I NEVER TOLD YOU BY CELESTE NG','WHITE TEARS BY HARI KUNZRU','REBECCA BY DAPHNE DU MAURIER','MR. PENUMBRA’S 24-HOUR BOOKSTORE BY ROBIN SLOAN','THE HIDDEN KEYS BY ANDRÉ ALEXIS','BEHIND THE SCENES AT THE MUSEUM BY KATE ATKINSON','THE DISTANT HOURS BY KATE MORTON','SNOW FALLING ON CEDARS BY DAVID GUTERSON','THE BOOK HUNTERS OF KATPADI BY PRADEEP SEBASTIAN']
+                lst=['Stunts & Effects','Stars','You are in','Attack of the Movies','After All?','Screening at Stores','GDC 2005','E3 2005','Preview','Designed for Fame','ECTS 2003','Canned','High Res','Activision','Zombiemania','The New Scooby-Doo Movies','Star Wars','The Librarian','Home Movies','The 7 ½ Deaths of Evelyn Hardcastle','EVERYTHING I NEVER TOLD YOU','WHITE TEARS','REBECCA','MR. PENUMBRA’S 24-HOUR BOOKSTORE','THE HIDDEN KEYS','BEHIND THE SCENES AT THE MUSEUM KINSON','THE DISTANT HOURS','SNOW FALLING ON CEDARS','THE BOOK HUNTERS OF KATPADI']
                 self.put(lst)
         def showpoetry(self):
 
-                lst=['Blue Laws by Kevin Young','The Unaccompanied by Simon Armitage','bone by Yrsa Daley-Ward','Love in the Last Days by D. Nurkse','Poet in Spain by Federico García Lorca','The Rain in Portugal by Billy Collins','Devotions by Mary Oliver','Voyage of the Sable Venus by Robin Coste Lewis','The Surveyors by Mary Jo Salter','Electric Arches by Eve L. Ewing']
+                lst=['Dead Poets Society','Public Opinions Needed','Fire Pro Wrestling for Dreamcast','Short Term','Videogame','Dark Poetry','War poetry','Tactical Nuke ','To the Amazonians','The Lost Tapes','One Time','Poetry corner','A little poetry','The Fred Hembeck Show','Capote','Supernatural','Poetry Slam','Poetry in Motion','Out of This World','Blue Laws','The Unaccompanied','bone','Love in the Last Days','Poet in Spain','The Rain in Portugal','Devotions','Voyage of the Sable Venus','The Surveyors','Electric Arches']
                 self.put(lst)
         def showhorror(self):
 
-                lst=['AFFINITY BY SARAH WATERS','AT THE MOUNTAINS OF MADNESS BY H.P. LOVECRAFT','AUDITION BY RYU MURAKAMI','THE BAD SEED BY WILLIAM MARCH','BELOVED BY TONI MORRISON','THE BETWEEN BY TANANARIVE DUE','BOY’S LIFE BY ROBERT R. MCCAMMON','CARMILLA BY J. SHERIDAN LE FANU','THE DEVIL IN SILVER BY VICTOR LAVALLE','DRACULA BY BRAM STOKER']
+                lst=['A Christmas','Chocolate','Home','Gift Ideas','Overall','Trivia','Alone','Flick','The Horror! The Horror!','The Lurking Horror','Horror Night!','Shuffling Horror','Spectral','Princess of Horror','The Amityville Horror','Silent Hill Mobile','Summon Horror','Jason Blum On the Stigma of Horror ','Masters of Horror','American Horror Story','AFFINITY','AT THE MOUNTAINS OF MADNESS','AUDITION','THE BAD SEED','BELOVED','THE BETWEEN','BOYS LIFE','CARMILLA','THE DEVIL IN SILVER','DRACULA']
                 self.put(lst)
         def showcomic(self):
 
-                lst=['Astonishing X-Men','Justice League Of America','New Avengers','Batman','Amazing Spider Man','Action Comics','The Incredible Hulk','Wolverine','The Ultimates','Teen Titans']
+                lst=['Grigori Rasputin','Doctor Light','Mysterio','The Govenor','Electro','Hunter Rose','Shade','Carnage','The Adversary','Parallax','Omni-Man','Annihilus','Omega Red','Despero','Violator','Mastermind','MODOK','Fin Fang Foom','Moon Knight','Astonishing X-Men','Justice League Of America','New Avengers','Batman','Amazing Spider Man','Action Comics','The Incredible Hulk','Wolverine','The Ultimates','Teen Titans']
                 self.put(lst)
                 
 if __name__=='__main__':
     master=tkinter.Tk()
     fiction_books(master)
     master.mainloop()
+
 
 
