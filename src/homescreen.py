@@ -1,9 +1,6 @@
 import tkinter
 from core.config import *
-from fiction import fiction_books
-from nonfiction import nonfiction_books
 from submit import Submit
-from delivery import Delivery
 
 class HomeScreen:
     def __init__(self,master):
@@ -26,19 +23,21 @@ class HomeScreen:
     def showfictionHere(self):
         self.body.destroy()
         self.body=tkinter.Frame(self.master)
-        fiction_books(self.body)
+        # @TODO
+        
         self.body.grid(row=0,column=1)
 
     def shownonfictionHere(self):
         self.body.destroy()
         self.body=tkinter.Frame(self.master)
-        nonfiction_books(self.body)
+        # @TODO
         self.body.grid(row=0,column=1)
 
     def showdeliveryHere(self):
         self.body.destroy()
         self.body=tkinter.Frame(self.master)
-        Delivery(self.body)
+        # @TODO
+        
         self.body.grid(row=0,column=1)
     def showsubmitHere(self):
         self.body.destroy()
